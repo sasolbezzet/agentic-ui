@@ -1,7 +1,7 @@
-import Header from '@/components/Header';
-import RegisterAgentForm from '@/components/RegisterAgentForm';
-import CreateJobForm from '@/components/CreateJobForm';
-import JobList from '@/components/JobList';
+import Header from '../components/Header';
+import RegisterAgentForm from '../components/RegisterAgentForm';
+import CreateJobForm from '../components/CreateJobForm';
+import JobList from '../components/JobList';
 
 export default function Home() {
   return (
