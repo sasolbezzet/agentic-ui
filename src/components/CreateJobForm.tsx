@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
-import { useJobContract } from '@/contracts/useJobContract';
+import { useJobContract } from '../contracts/useJobContract';
 import { useAccount } from 'wagmi';
 
 export default function CreateJobForm() {

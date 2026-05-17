@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAgentRegistry } from '@/contracts/useAgentRegistry';
+import { useAgentRegistry } from '../contracts/useAgentRegistry';
 import { useAccount } from 'wagmi';
 
 export default function RegisterAgentForm() {
