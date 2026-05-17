@@ -1,27 +1,27 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
-import { useJobContract } from '../contracts/useJobContract';
-import { useAccount } from 'wagmi';
+import { useAccount, useContractWrite } from 'wagmi';
+import jobAbi from '../abis/JobContract.json';
 
 export default function CreateJobForm() {
   const { address } = useAccount();
-  const job = useJobContract(process.env.NEXT_PUBLIC_JOB_CONTRACT_ADDRESS as `0x${string}`);
 
   const [worker, setWorker] = useState('');
   const [amount, setAmount] = useState('0');
   const [desc, setDesc] = useState('');
   const [txHash, setTxHash] = useState<string | null>(null);
 
-  const { write: create, isLoading } = job.createJob(
-    worker as `0x${string}`,
-    ethers.parseUnits(amount || '0', 6), // USDC 6 decimals
-    desc
-  );
+  const { write, isLoading } = useContractWrite({
+    address: process.env.NEXT_PUBLIC_JOB_CONTRACT_ADDRESS as `0x${string}`,
+    abi: jobAbi as any,
+    functionName: 'createJob',
+    args: [worker as `0x${string}`, ethers.parseUnits(amount || '0', 6), desc],
+  });
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!create) return;
-    const { hash } = await create();
+    if (!write) return;
+    const { hash } = await write();
     setTxHash(hash);
     setWorker('');
     setAmount('0');
