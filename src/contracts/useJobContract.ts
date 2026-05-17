@@ -1,4 +1,4 @@
-import { useContractWrite, useContractEvent } from 'wagmi';
+import { useContractWrite } from 'wagmi';
 import jobAbi from '../abis/JobContract.json';
 import type { Address } from 'viem';
 
@@ -27,11 +27,9 @@ export const useJobContract = (address: Address) => {
       args: [jobId, approved],
     });
 
-  const jobCreated = useContractEvent({
-    address,
-    abi: jobAbi,
-    eventName: 'JobCreated',
-  });
+  // Event handling is omitted for static export; keep placeholder structure
+  const jobCreated = { data: [] as any };
 
   return { createJob, submitDeliverable, evaluateDeliverable, jobCreated };
+
 };

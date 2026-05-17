@@ -7,7 +7,8 @@ export const arcTestnet: Chain = {
   name: 'Arc Testnet',
   network: 'arc-testnet',
   nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
-  rpcUrls: { default: { http: [process.env.NEXT_PUBLIC_ARC_RPC_URL!] } },
+  // Fallback to testnet RPC if env var missing (GH Actions may not have .env.local)
+  rpcUrls: { default: { http: [process.env.NEXT_PUBLIC_ARC_RPC_URL || 'https://rpc.testnet.arc.network'] } },
   blockExplorers: {
     default: {
       name: 'Arc Explorer',
@@ -19,5 +20,6 @@ export const arcTestnet: Chain = {
 export const wagmiConfig = createConfig({
   chains: [arcTestnet],
   transports: { [arcTestnet.id]: http() },
+  // Use only MetaMask connector to avoid WalletConnect projectId requirement
   connectors: [metaMask()],
 });
