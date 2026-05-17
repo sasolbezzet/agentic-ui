@@ -17,7 +17,7 @@ export default function JobList() {
 
   useEffect(() => {
     if (!events) return;
-    const newJobs = events.map((e) => ({
+    const newJobs = events.map((e: typeof events[number]) => ({
       jobId: e.args?.jobId,
       employer: e.args?.employer,
       worker: e.args?.worker,
