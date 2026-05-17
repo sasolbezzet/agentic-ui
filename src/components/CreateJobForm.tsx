@@ -11,13 +11,13 @@ export default function CreateJobForm() {
   const [desc, setDesc] = useState('');
   const [txHash, setTxHash] = useState<string | null>(null);
 
-  // @ts-ignore – wagmi types sometimes miss `write` in generic return
+  // @ts-ignore – wagmi types sometimes miss `write` in generic return and config typings
   const { write, isLoading } = useContractWrite({
     address: process.env.NEXT_PUBLIC_JOB_CONTRACT_ADDRESS as `0x${string}`,
     abi: jobAbi as any,
     functionName: 'createJob',
     args: [worker as `0x${string}`, ethers.parseUnits(amount || '0', 6), desc],
-  });
+  } as any);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
