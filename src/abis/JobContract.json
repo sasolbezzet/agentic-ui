@@ -1,0 +1,51 @@
+[
+  {
+    "type": "function",
+    "name": "createJob",
+    "inputs": [
+      { "name": "worker", "type": "address" },
+      { "name": "amount", "type": "uint256" },
+      { "name": "description", "type": "string" }
+    ],
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "submitDeliverable",
+    "inputs": [
+      { "name": "jobId", "type": "uint256" },
+      { "name": "ipfsHash", "type": "string" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "evaluateDeliverable",
+    "inputs": [
+      { "name": "jobId", "type": "uint256" },
+      { "name": "approved", "type": "bool" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getTokenId",
+    "inputs": [{ "name": "agent", "type": "address" }],
+    "outputs": [{ "name": "", "type": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "event",
+    "name": "JobCreated",
+    "inputs": [
+      { "name": "jobId", "type": "uint256", "indexed": true },
+      { "name": "employer", "type": "address" },
+      { "name": "worker", "type": "address" },
+      { "name": "payment", "type": "uint256" }
+    ],
+    "anonymous": false
+  }
+]
