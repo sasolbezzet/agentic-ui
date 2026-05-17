@@ -1,7 +1,7 @@
-import '@/styles/globals.css';
+import '../styles/globals.css';
 import { WagmiConfig } from 'wagmi';
 import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
-import { wagmiConfig } from '@/lib/wagmi';
+import { wagmiConfig } from '../lib/wagmi';
 
 export default function App({ Component, pageProps }: any) {
   const { connectors } = getDefaultWallets({
