@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useJobContract } from '@/contracts/useJobContract';
+import { useJobContract } from '../contracts/useJobContract';
 import { ethers } from 'ethers';
 
 type Job = {
